@@ -10,8 +10,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "scripts/background.js",
-      "scripts/u2f-api.js"
+      "scripts/background.js"
     ]
   },
   "permissions": [

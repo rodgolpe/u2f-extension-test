@@ -41,8 +41,7 @@ u2fcomms.Forwarder.prototype.init = function() {
     if (message.data == 'init' && message.ports.length > 0) {
       self.pageOrigin_ = message.origin;
       self.pagePort_ = message.ports[0];
-      self.pagePort_.addEventListener('message',
-          self.onPageMessage_.bind(self));
+      self.pagePort_.addEventListener('message', self.onPageMessage_.bind(self));
       self.pagePort_.start();
       self.connectToExtension_();
 
@@ -70,7 +69,9 @@ u2fcomms.Forwarder.prototype.onPageMessage_ = function(event) {
     origin: this.pageOrigin_,
     request: event.data
   };
-  console.info('U2F-COMMS.JS MESSAGE RECEIVED FROM EXTENSION:', message);
+  console.info('U2F-COMMS.JS MESSAGE RECEIVED FROM PAGE:', message);
+
+  console.info(this.extensionPort_);
   this.extensionPort_.postMessage(message);
 };
 
